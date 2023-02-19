@@ -2,11 +2,13 @@ package com.Spring.SpringBoot.web;
 
 import com.Spring.SpringBoot.domain.Cliente;
 import com.Spring.SpringBoot.servicio.ClienteService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,7 +33,10 @@ public class ControladorInicio {
         return "modificar";
     }
     @PostMapping("/guardar")
-    public String guardar(Cliente cliente){
+    public String guardar(@Valid Cliente cliente, Errors errors){
+        if(errors.hasErrors()){
+            return "modificar";
+        }
         clienteService.guardar(cliente);
         return "redirect:/";
     }

@@ -2,13 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Agregar & editar cliente</title>
+    <title>Agregar & Editar Cliente</title>
 </head>
 <body>
-    <h1>Datos del cliente</h1>
-    <hr>
+
+    <header th:replace="layout/plantilla :: header"/>
+
+    <h2>Datos del cliente</h2>
+
     <a th:href="@{/}">Regresar al inicio</a>
+
     <hr>
+
     <form th:action="@{/guardar}" method="post" th:object="${cliente}"/>
         <div>
             <input type="hidden" name="id_cliente" id="id_cliente" th:field="${cliente.id_cliente}"/>
@@ -17,14 +22,17 @@
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" th:field="${cliente.nombre}"/>
         </div>
+        <span style="color:red;" th:if="${#fields.hasErrors('cliente.nombre')}" th:errors="${cliente.nombre}"></span>
         <div>
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" id="apellido" th:field="${cliente.apellido}"/>
         </div>
+        <span style="color:red;" th:if="${#fields.hasErrors('cliente.apellido')}" th:errors="${cliente.apellido}"></span>
         <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" th:field="${cliente.email}"/>
+            <input type="text" name="email" id="email" th:field="${cliente.email}"/>
         </div>
+        <span style="color:red;" th:if="${#fields.hasErrors('cliente.email')}" th:errors="${cliente.email}"></span>
         <div>
             <label for="telefono">Telefono:</label>
             <input type="tel" name="telefono" id="telefono" th:field="${cliente.telefono}"/>
@@ -33,9 +41,13 @@
             <label for="saldo">Saldo:</label>
             <input type="number" name="saldo" id="saldo" th:field="${cliente.saldo}"/>
         </div>
+        <span style="color:red;" th:if="${#fields.hasErrors('cliente.saldo')}" th:errors="${cliente.saldo}"></span>
         <div>
             <input type="submit" value="Guardar"/>
         </div>
     </form>
+
+    <footer th:replace="layout/plantilla :: footer"/>
+
 </body>
 </html>

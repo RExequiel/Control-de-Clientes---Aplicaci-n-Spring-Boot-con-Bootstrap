@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Plantilla</title>
+</head>
+<body>
+
+    <header th:fragment="header">
+        <h1 th:text="#{plantilla.titulo}">Titulo a traves del messages</h1>
+        <hr>
+    </header>
+
+    <footer th:fragment="footer">
+        <p>
+            [[#{plantilla.pie-pagina}]] <a href="https://exequielgerez.tech" target="_blank">exequielgerez.tech</a>
+        </p>
+        <hr>
+    </footer>
+
+</body>
+</html>

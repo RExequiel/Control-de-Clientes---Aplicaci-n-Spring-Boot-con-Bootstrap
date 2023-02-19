@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Administracion</title>
+    <title>Home</title>
 </head>
 <body>
 
-    <h1>Control Clientes</h1>
-    <hr>
+    <header th:replace="layout/plantilla :: header"/>
+
     <a th:href="@{/agregar}">Agregar Cliente</a>
+
     <hr>
+
     <div th:if="${clientes != null and !clientes.empty}">
         <table border="1px solid #ccc">
             <thead>
@@ -39,8 +41,12 @@
 
         </table>
     </div>
+
     <div th:if="${clientes == null or clientes.empty}">
         La lista de clientes esta vacia
     </div>
+
+    <footer th:replace="layout/plantilla :: footer"/>
+
 </body>
 </html>
