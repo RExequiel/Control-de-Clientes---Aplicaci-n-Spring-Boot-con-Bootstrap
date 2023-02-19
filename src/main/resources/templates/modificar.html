@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Agregar & editar cliente</title>
+</head>
+<body>
+    <h1>Datos del cliente</h1>
+    <hr>
+    <a th:href="@{/}">Regresar al inicio</a>
+    <hr>
+    <form th:action="@{/guardar}" method="post" th:object="${cliente}"/>
+        <div>
+            <input type="hidden" name="id_cliente" id="id_cliente" th:field="${cliente.id_cliente}"/>
+        </div>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" th:field="${cliente.nombre}"/>
+        </div>
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" id="apellido" th:field="${cliente.apellido}"/>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" th:field="${cliente.email}"/>
+        </div>
+        <div>
+            <label for="telefono">Telefono:</label>
+            <input type="tel" name="telefono" id="telefono" th:field="${cliente.telefono}"/>
+        </div>
+        <div>
+            <label for="saldo">Saldo:</label>
+            <input type="number" name="saldo" id="saldo" th:field="${cliente.saldo}"/>
+        </div>
+        <div>
+            <input type="submit" value="Guardar"/>
+        </div>
+    </form>
+</body>
+</html>
