@@ -7,6 +7,12 @@
 <body>
 
     <header th:fragment="header">
+        <div>
+            <a th:href="@{/(lang=es)}">🇪🇸</a>
+            /
+            <a th:href="@{/(lang=en)}">🇺🇸</a>
+        </div>
+        <hr>
         <h1 th:text="#{plantilla.titulo}">Titulo a traves del messages</h1>
         <hr>
     </header>

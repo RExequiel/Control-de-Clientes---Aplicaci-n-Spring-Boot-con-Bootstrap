@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>[[#{head.titulo}]]</title>
 </head>
 <body>
 
     <header th:replace="layout/plantilla :: header"/>
 
-    <a th:href="@{/agregar}">Agregar Cliente</a>
+    <a th:href="@{/agregar}">[[#{accion.agregar}]]</a>
 
     <hr>
 
@@ -16,12 +16,12 @@
         <table border="1px solid #ccc">
             <thead>
                 <tr>
-                    <th>Nombre  </th>
-                    <th>Apellido  </th>
-                    <th>Email  </th>
-                    <th>Telefono  </th>
-                    <th>Saldo </th>
-                    <th>Acciones </th>
+                    <th>[[#{cliente.nombre}]]</th>
+                    <th>[[#{cliente.apellido}]]</th>
+                    <th>[[#{cliente.email}]]</th>
+                    <th>[[#{cliente.telefono}]]</th>
+                    <th>[[#{cliente.saldo}]]</th>
+                    <th>[[#{cliente.acciones}]]</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +32,9 @@
                     <td th:text="${cliente.telefono}"></td>
                     <td th:text="${cliente.saldo}"></td>
                     <td>
-                        <a th:href="@{/editar/} + ${cliente.id_cliente}">Editar</a>
+                        <a th:href="@{/editar/} + ${cliente.id_cliente}">[[#{accion.editar}]]</a>
                         <br>
-                        <a th:href="@{/eliminar(id_cliente=${cliente.id_cliente})}">Eliminar</a>
+                        <a th:href="@{/eliminar(id_cliente=${cliente.id_cliente})}">[[#{accion.eliminar}]]</a>
                     </td>
                 </tr>
             </tbody>
@@ -43,7 +43,7 @@
     </div>
 
     <div th:if="${clientes == null or clientes.empty}">
-        La lista de clientes esta vacia
+        [[#{cliente.lista-vacia}]]
     </div>
 
     <footer th:replace="layout/plantilla :: footer"/>

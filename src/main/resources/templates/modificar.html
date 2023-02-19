@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Agregar & Editar Cliente</title>
+    <title>[[#{modificar.titulo-head}]]</title>
 </head>
 <body>
 
     <header th:replace="layout/plantilla :: header"/>
 
-    <h2>Datos del cliente</h2>
+    <h2>[[#{modificar.titulo}]]</h2>
 
-    <a th:href="@{/}">Regresar al inicio</a>
+    <a th:href="@{/}">[[#{modificar.accion-regresar}]]</a>
 
     <hr>
 
@@ -19,31 +19,31 @@
             <input type="hidden" name="id_cliente" id="id_cliente" th:field="${cliente.id_cliente}"/>
         </div>
         <div>
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">[[#{cliente.nombre}]]:</label>
             <input type="text" name="nombre" id="nombre" th:field="${cliente.nombre}"/>
         </div>
         <span style="color:red;" th:if="${#fields.hasErrors('cliente.nombre')}" th:errors="${cliente.nombre}"></span>
         <div>
-            <label for="apellido">Apellido:</label>
+            <label for="apellido">[[#{cliente.apellido}]]:</label>
             <input type="text" name="apellido" id="apellido" th:field="${cliente.apellido}"/>
         </div>
         <span style="color:red;" th:if="${#fields.hasErrors('cliente.apellido')}" th:errors="${cliente.apellido}"></span>
         <div>
-            <label for="email">Email:</label>
+            <label for="email">[[#{cliente.email}]]:</label>
             <input type="text" name="email" id="email" th:field="${cliente.email}"/>
         </div>
         <span style="color:red;" th:if="${#fields.hasErrors('cliente.email')}" th:errors="${cliente.email}"></span>
         <div>
-            <label for="telefono">Telefono:</label>
+            <label for="telefono">[[#{cliente.telefono}]]:</label>
             <input type="tel" name="telefono" id="telefono" th:field="${cliente.telefono}"/>
         </div>
         <div>
-            <label for="saldo">Saldo:</label>
+            <label for="saldo">[[#{cliente.saldo}]]:</label>
             <input type="number" name="saldo" id="saldo" th:field="${cliente.saldo}"/>
         </div>
         <span style="color:red;" th:if="${#fields.hasErrors('cliente.saldo')}" th:errors="${cliente.saldo}"></span>
         <div>
-            <input type="submit" value="Guardar"/>
+            <input type="submit" th:value="#{modificar.accion-guardar}"/>
         </div>
     </form>
 
