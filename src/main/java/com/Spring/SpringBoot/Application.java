@@ -1,5 +1,6 @@
 package com.Spring.SpringBoot;
 
+import com.Spring.SpringBoot.web.SecurityConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

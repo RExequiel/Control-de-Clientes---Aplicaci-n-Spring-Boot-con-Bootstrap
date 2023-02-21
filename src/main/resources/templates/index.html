@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security"
+>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>[[#{head.titulo}]]</title>
 </head>
 <body>
 
     <header th:replace="layout/plantilla :: header"/>
 
-    <a th:href="@{/agregar}">[[#{accion.agregar}]]</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{accion.agregar}]]</a>
 
     <hr>
 
@@ -21,7 +23,7 @@
                     <th>[[#{cliente.email}]]</th>
                     <th>[[#{cliente.telefono}]]</th>
                     <th>[[#{cliente.saldo}]]</th>
-                    <th>[[#{cliente.acciones}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{cliente.acciones}]]</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +33,7 @@
                     <td th:text="${cliente.email}"></td>
                     <td th:text="${cliente.telefono}"></td>
                     <td th:text="${cliente.saldo}"></td>
-                    <td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
                         <a th:href="@{/editar/} + ${cliente.id_cliente}">[[#{accion.editar}]]</a>
                         <br>
                         <a th:href="@{/eliminar(id_cliente=${cliente.id_cliente})}">[[#{accion.eliminar}]]</a>
