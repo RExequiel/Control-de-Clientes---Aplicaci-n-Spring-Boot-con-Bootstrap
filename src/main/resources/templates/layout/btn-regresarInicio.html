@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>btn: Regresar al Inicio</title>
+</head>
+<body>
+<section th:fragment="btn-regresarInicio" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-3">
+                <a th:href="@{/}" class="btn btn-dark btn-block"><i class="fa-solid fa-left-long"></i>
+                    [[#{modificar.accion-regresar}]]</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

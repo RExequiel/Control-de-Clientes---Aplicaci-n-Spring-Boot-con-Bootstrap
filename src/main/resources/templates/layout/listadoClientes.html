@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Clientes</title>
+</head>
+<body>
+<section th:fragment="listadoClientes" id="clientes">
+    <div class="container">
+        <div class="row">
+            <h4 class="text-center text-dark">Listado</h4>
+            <div class="col-md-12" th:if="${clientes != null and !clientes.empty}">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="col">[[#{cliente.nombre}]]</th>
+                        <th scope="col">[[#{cliente.apellido}]]</th>
+                        <th scope="col">[[#{cliente.email}]]</th>
+                        <th scope="col">[[#{cliente.telefono}]]</th>
+                        <th scope="col">[[#{cliente.saldo}]]</th>
+                        <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">[[#{cliente.acciones}]]</th>
+                    </tr>
+                    </thead>
+                    <tbody table-info>
+                    <tr th:each="cliente : ${clientes}">
+                        <td scope="row" th:text="${cliente.nombre}"></td>
+                        <td scope="row" th:text="${cliente.apellido}"></td>
+                        <td scope="row" th:text="${cliente.email}"></td>
+                        <td scope="row" th:text="${cliente.telefono}"></td>
+                        <td scope="row" th:text="${cliente.saldo}"></td>
+                        <td scope="row" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="btn btn-success py-1" th:href="@{/editar/} + ${cliente.id_cliente}"><i
+                                    class="fa-solid fa-square-pen"></i></a>
+                            <a class="btn btn-danger py-1" th:href="@{/eliminar(id_cliente=${cliente.id_cliente})}"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

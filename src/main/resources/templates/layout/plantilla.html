@@ -8,59 +8,70 @@
     <title>Plantilla</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script src="https://kit.fontawesome.com/2821280c26.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
 </head>
 <body>
 
-    <header th:fragment="header">
-        <nav class="navbar navbar-expand-sm bg-info p-3">
-            <div class="container justify-content-between">
-                <a class="nav-link" th:href="@{/}"><h1 class="navbar-brand"><i class="fa-solid fa-mug-hot"></i> [[#{plantilla.titulo}]]</h1></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse container justify-content-end" id="navbarNavDropdown">
-                    <ul sec:authorize="isAuthenticated()" class="navbar-nav">
-                        <li class="nav-item dropdown px-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item"><span sec:authentication="name">Usuario que hizo login</span></li>
-                                <li class="dropdown-item"><span sec:authentication="principal.authorities">Roles del Usuario que hizo login</span></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown px-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-flag"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/(lang=es)}">🇪🇸</a></li>
-                                <li><a class="dropdown-item" th:href="@{/(lang=en)}">🇺🇸</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item px-2">
-                            <form method="post" th:action="@{/logout}">
-                                <a class="nav-link active" href="#" onclick="this.parentNode.submit();"><i class="fa-solid fa-right-from-bracket"></i> [[#{plantilla.cerrar-sesion}]]</a>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <footer th:fragment="footer" class="bg-info mt-5 p-5">
-        <div class="container">
-            <div class="col">
-                <p class="lead text-center">
-                    <strong>[[#{plantilla.pie-pagina}]] &copy; </strong><a class="link-primary nav-link" href="https://exequielgerez.tech" target="_blank">exequielgerez.tech</a>
-                </p>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-sm bg-info p-3">
+        <div class="container justify-content-between">
+            <a class="nav-link" th:href="@{/}"><h1 class="navbar-brand"><i class="fa-solid fa-mug-hot"></i>
+                [[#{plantilla.titulo}]]</h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse container justify-content-end" id="navbarNavDropdown">
+                <ul sec:authorize="isAuthenticated()" class="navbar-nav">
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><span sec:authentication="name">Usuario que hizo login</span></li>
+                            <li class="dropdown-item"><span sec:authentication="principal.authorities">Roles del Usuario que hizo login</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="fa-solid fa-flag"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/(lang=es)}">🇪🇸</a></li>
+                            <li><a class="dropdown-item" th:href="@{/(lang=en)}">🇺🇸</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item px-2">
+                        <form method="post" th:action="@{/logout}">
+                            <a class="nav-link active" href="#" onclick="this.parentNode.submit();"><i
+                                    class="fa-solid fa-right-from-bracket"></i> [[#{plantilla.cerrar-sesion}]]</a>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+    </nav>
+</header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<footer th:fragment="footer" class="bg-info mt-5 p-5">
+    <div class="container">
+        <div class="col">
+            <p class="lead text-center">
+                <strong>[[#{plantilla.pie-pagina}]] &copy; </strong><a class="link-primary nav-link"
+                                                                       href="https://exequielgerez.tech"
+                                                                       target="_blank">exequielgerez.tech</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
