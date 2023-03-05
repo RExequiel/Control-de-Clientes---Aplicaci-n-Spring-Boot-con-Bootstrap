@@ -13,13 +13,12 @@
         <div class="row">
             <h4 class="text-center text-dark">Listado</h4>
             <div class="col-md-12" th:if="${clientes != null and !clientes.empty}">
-                <table class="table table-hover">
+                <table class="table table-striped table-hover">
                     <thead class="table-dark">
                     <tr>
                         <th scope="col">[[#{cliente.nombre}]]</th>
                         <th scope="col">[[#{cliente.apellido}]]</th>
                         <th scope="col">[[#{cliente.email}]]</th>
-                        <th scope="col">[[#{cliente.telefono}]]</th>
                         <th scope="col">[[#{cliente.saldo}]]</th>
                         <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">[[#{cliente.acciones}]]</th>
                     </tr>
@@ -29,7 +28,6 @@
                         <td scope="row" th:text="${cliente.nombre}"></td>
                         <td scope="row" th:text="${cliente.apellido}"></td>
                         <td scope="row" th:text="${cliente.email}"></td>
-                        <td scope="row" th:text="${cliente.telefono}"></td>
                         <td scope="row" th:text="${cliente.saldo}"></td>
                         <td scope="row" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a class="btn btn-success py-1" th:href="@{/editar/} + ${cliente.id_cliente}"><i
@@ -40,6 +38,29 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                <span class="text-dark">[[#{cliente.lista-vacia}]]</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3><i class="fa-solid fa-users"></i> Total de Clientes</h3>
+                        <h4 class="display-4" th:text="${totalClientes}"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center bg-danger text-white mb-3">
+                    <div class="card-body">
+                        <h3><i class="fa-solid fa-scale-balanced"></i> Saldo Total</h3>
+                        <h4 class="display-4" th:text="${saldoTotal}"></h4>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

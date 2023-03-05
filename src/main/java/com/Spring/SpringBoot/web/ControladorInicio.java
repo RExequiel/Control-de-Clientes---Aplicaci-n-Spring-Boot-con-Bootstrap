@@ -28,8 +28,15 @@ public class ControladorInicio {
         log.info("Usuario que hizo login: "+ user);
 
         var clientes = clienteService.listarClientes();
+        var saldoTotal = 0D;
+
+        for (var p: clientes) {
+            saldoTotal += p.getSaldo();
+        }
 
         model.addAttribute("clientes", clientes);
+        model.addAttribute("saldoTotal", saldoTotal);
+        model.addAttribute("totalClientes", clientes.size());
         return "index";
     }
     @GetMapping("/agregar")
